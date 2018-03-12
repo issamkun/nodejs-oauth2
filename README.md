@@ -11,7 +11,7 @@ npm install
 npm run mate
 ```
 
-## Initiate a OAuth2 Flow
+## Initiate an OAuth2 Flow
 
 ```
 http://localhost:3000/oauth/authorize?client_id=vente1&response_type=code&redirect_uri=http://localhost:3000/
