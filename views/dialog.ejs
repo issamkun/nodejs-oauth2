@@ -1,0 +1,20 @@
+<% include ./layout %>
+<h1>選べ、お兄ちゃんよ！</h1>
+
+<body>
+
+  <p>Hello <%= user.username %>!</p>
+  <p><b> <%= client.client_id %> </b> is requesting access to your profile data.</p>
+  <p>Proceed with approval?</p>
+
+  <form action="/oauth/authorize/decision" method="post">
+    <input name="transaction_id" type="hidden" value="<%= transactionID %>" />
+    <div>
+      <input type="submit" value="Allow" id="allow" />
+      <input type="submit" value="Deny" name="cancel" id="deny" />
+    </div>
+  </form>
+  
+</body>
+
+</html>

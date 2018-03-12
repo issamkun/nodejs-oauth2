@@ -1,0 +1,11 @@
+// DB and server config
+
+module.exports = {
+  mongo: {
+    uri: 'mongodb://user:user@ds151528.mlab.com:51528/oauthdb'
+  },
+  seedMongoDB: true,
+  db: 'mongo',
+  sessionSecret: 'WatashiwaWatashiha',
+  maxAge: 3600000 * 24 * 7 * 52
+}
