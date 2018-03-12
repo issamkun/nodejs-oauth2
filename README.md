@@ -5,7 +5,14 @@ Implementation of an oauth2 server
 ## Installation
 
 ```bash
-git clone https://github.com/
+git clone https://github.com/issamkun/nodejs-oauth2.git
+cd nodejs-oauth2
 npm install
-npm start mate
+npm run mate
+```
+
+## Initiate a OAuth2 Flow
+
+```
+http://localhost:3000/oauth/authorize?client_id=vente1&response_type=code&redirect_uri=http://localhost:3000/
 ```
