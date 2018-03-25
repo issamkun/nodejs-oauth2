@@ -60,8 +60,8 @@ User.find({}).remove()
     }, {
         email: 'user@user.user',
         password: '123456',
-        firstname: 'Jhon',
-        lastname: 'Jhonson',
+        firstname: 'Hans',
+        lastname: 'Johnson',
         address: '123 Jhonson street app 10',
         city: 'Jhonson city',
         postalCode: 'Z2Z 1Z1',
