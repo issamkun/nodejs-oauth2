@@ -1,9 +1,9 @@
 <% include ./layout %>
-<h1>選べ、お兄ちゃんよ！</h1>
+<h1>Decision</h1>
 
 <body>
 
-  <p>Hello <%= user.username %>!</p>
+  <p>Hello <%= user.firstname %> <%= user.lastname %>!</p>
   <p><b> <%= client.client_id %> </b> is requesting access to your profile data.</p>
   <p>Proceed with approval?</p>
 

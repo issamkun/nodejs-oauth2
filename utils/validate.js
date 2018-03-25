@@ -15,6 +15,8 @@ validate.user = (user, password) => {
     validate.userExists(user);
     if (user.password !== password) {
         validate.logAndThrow('User password is invalid');
+        console.log('User password is invalid');
+        
     }
     return user;
 };
@@ -22,6 +24,7 @@ validate.user = (user, password) => {
 validate.userExists = (user) => {
     if (user == null) {
         validate.logAndThrow('User does not exist');
+        console.log('User does not exist');
     }
     return user;
 };

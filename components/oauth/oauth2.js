@@ -23,10 +23,9 @@ server.grant(oauth2orize.grant.code(function (client, redirectUri, user, ares, c
     var code = new db.OAuthAuthorizationCode({
         authorization_code: tgen(16),
         OAuthClient: client._id,
-        // expires: Date.now(), //expiresAt: Date(now).add(1, "days")
         redirect_uri: redirectUri,
         User: user._id,
-        scope: 'defaultscope'
+        scope: 'profile'
     });
     console.log('>>>>> this is the saved code', code);
     code.save(function (err) {
@@ -48,15 +47,12 @@ server.exchange(oauth2orize.exchange.code(function (client, code, redirectUri, c
         const clientString = client.toString();
         const authCodeString = authCode.toString();
         if (clientString._id !== authCodeString.OAuthClient) { return callback(null, false); }
-        console.log('>>>>>  debug', authCode);
         if (redirectUri !== authCode.redirect_uri) { return callback(null, false); }
 
         authCode.remove(function (err) {
             if (err) { return callback(err); }
             var token = new db.OAuthAccessToken({
                 access_token: tgen(256),
-                // expires: Date.now(),
-                // scope: authCode.scope,
                 User: authCode.User,
                 OAuthClient: authCode.OAuthClient
             });

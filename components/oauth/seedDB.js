@@ -47,13 +47,27 @@ OAuthScope.find({}).remove()
 User.find({}).remove()
   .then(function () {
     User.create({
-      username: 'admin',
-      password: 'admin',
-      address: '123 Admin street, nowhere city, Z1Z 1Z1, NW'
+      email: 'admin@admin.admin',
+      password: '123456',
+      firstname: 'Admin',
+      lastname: 'Strator',
+      address: '123 Admin street app 100',
+      city: 'Admin city',
+      postalCode: 'Z1Z 1Z1',
+      province: 'QC',
+      role: 'admin',
+      picture: 'https://google.ca/ico.png'
     }, {
-        username: 'issam',
+        email: 'user@user.user',
         password: '123456',
-        address: '777 Issam street, somewhere city, Z1Z 1Z1, NW'
+        firstname: 'Jhon',
+        lastname: 'Jhonson',
+        address: '123 Jhonson street app 10',
+        city: 'Jhonson city',
+        postalCode: 'Z2Z 1Z1',
+        province: 'QC',
+        role: 'user',
+        picture: 'https://google.ca/lol.png'
       })
       .then(function (user) {
         console.log('++ finished populating users', user);
@@ -61,10 +75,16 @@ User.find({}).remove()
           .then(function () {
             OAuthClient.create({
               client_id: 'vente1',
-              client_secret: 'vente1NeVendRien',
-              redirect_uri: 'http://localhost:3000/',
-              User: user._id
-            })
+              client_secret: 'vente1',
+              redirect_uri: 'http://localhost:3000/'
+              // User: user._id
+            }, {
+                client_id: 'vente2',
+                client_secret: 'vente2',
+                redirect_uri: 'http://localhost:3000/'
+                // User: user._id
+              }
+            )
               .then(function (client) {
                 console.log('++ finished populating OAuthClient', client);
               }).catch(console.log);

@@ -3,14 +3,85 @@
  */
 'use strict';
 
+
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-  username: String,
-  password: String,
-  scope: String,
-  address: String
-});
+const roles = ['user', 'admin']
 
-module.exports = mongoose.model('User', UserSchema);
+const userSchema = new Schema({
+  email: {
+    type: String,
+    match: /^\S+@\S+\.\S+$/,
+    required: true,
+    unique: true,
+    trim: true,
+    lowercase: true
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 6
+  },
+  firstname: {
+    type: String,
+    required: true,
+    index: true,
+    trim: true
+  },
+  lastname: {
+    type: String,
+    required: true,
+    index: true,
+    trim: true
+  },
+  address: {
+    type: String,
+    required: true,
+    index: true,
+    trim: true
+  },
+  city: {
+    type: String,
+    required: true,
+    index: true,
+    trim: true
+  },
+  postalCode: {
+    type: String,
+    required: true,
+    index: true,
+    trim: true
+  },
+  province: {
+    type: String,
+    required: true,
+    index: true,
+    trim: true
+  },
+  services: {
+    facebook: String,
+    google: String
+  },
+  role: {
+    type: String,
+    enum: roles,
+    default: 'user'
+  },
+  picture: {
+    type: String,
+    trim: true
+  }
+}, {
+  timestamps: true
+})
+
+
+// var UserSchema = new Schema({
+//   username: String,
+//   password: String,
+//   scope: String,
+//   address: String
+// });
+
+module.exports = mongoose.model('User', userSchema);

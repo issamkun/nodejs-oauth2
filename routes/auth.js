@@ -15,10 +15,10 @@ const { BasicStrategy } = require('passport-http');
 /**
  * LocalStrategy
  *
- * Authenticate users based on a username and password.
+ * Authenticate users based on a user email and password.
  */
-passport.use(new LocalStrategy((username, password, done) => {
-  User.findOne({ username })
+passport.use(new LocalStrategy((email, password, done) => {
+  User.findOne({ email })
     .then(user => validate.user(user, password))
     .then(user => done(null, user))
     .catch(() => done(null, false));
@@ -46,7 +46,7 @@ passport.use(new BearerStrategy(
     Token.findOne({ access_token: accessToken }, function (err, token) {
       // TODO verify this part
       if (err) { return callback(err); }
-      
+
       // No token found
       if (!token) { return callback(null, false); }
       console.log(">>>> found a token : ", token);
@@ -71,8 +71,8 @@ passport.serializeUser((user, done) => {
   done(null, user._id);
 });
 
-passport.deserializeUser((user, done) => {
-  User.findOne(user._id)
+passport.deserializeUser((id, done) => {
+  User.findById(id)
     .then(user => done(null, user))
     .catch(err => done(err));
 });

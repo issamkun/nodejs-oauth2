@@ -8,9 +8,17 @@ exports.userinfo = [
 
     res.json({
       user_id: req.user.id,
-      username: req.user.username,
+      email: req.user.email,
+      // password: req.user.password,
+      firstname: req.user.firstname,
+      lastname: req.user.lastname,
       address: req.user.address,
-      scope: req.authInfo.scope
+      city: req.user.city,
+      postalCode: req.user.postalCode,
+      province: req.user.province,
+      role: req.user.role,
+      picture: req.user.picture
     });
+
   },
 ];
