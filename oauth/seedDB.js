@@ -4,15 +4,12 @@
  */
 
 'use strict';
-var config = require('./../../config')
-var mongodb = require('./mongodb');
+var mongodb = require('./models');
 
 // var Thing = mongodb.Thing;
-var OAuthAccessToken = mongodb.OAuthAccessToken
 var OAuthAuthorizationCode = mongodb.OAuthAuthorizationCode
+var OAuthAccessToken = mongodb.OAuthAccessToken
 var OAuthClient = mongodb.OAuthClient
-var OAuthRefreshToken = mongodb.OAuthRefreshToken
-var OAuthScope = mongodb.OAuthScope
 var User = mongodb.User
 
 // Some of this code was inspired from the following sources (official doc for oauth2orize)
@@ -23,25 +20,9 @@ OAuthAccessToken.remove({})
     console.log('-- removed OAuthAccessToken');
   });
 
-OAuthRefreshToken.remove({})
-  .then(function () {
-    console.log('-- removed OAuthRefreshToken');
-  });
-
 OAuthAuthorizationCode.remove({})
   .then(function () {
     console.log('-- removed OAuthAuthorizationCode');
-  });
-
-OAuthScope.find({}).remove()
-  .then(function () {
-    OAuthScope.create({
-      scope: 'profile',
-      is_default: true
-    })
-      .then(function (oauthscope) {
-        console.log('++ finished populating OAuthScope', oauthscope);
-      });
   });
 
 User.find({}).remove()
@@ -76,13 +57,13 @@ User.find({}).remove()
             OAuthClient.create({
               client_id: 'vente1',
               client_secret: 'vente1',
-              redirect_uri: 'http://localhost:3000/'
-              // User: user._id
+              redirect_uri: 'http://localhost:3000/',
+              User: user._id
             }, {
                 client_id: 'vente2',
                 client_secret: 'vente2',
-                redirect_uri: 'http://localhost:3000/'
-                // User: user._id
+                redirect_uri: 'http://localhost:3000/',
+                User: user._id
               }
             )
               .then(function (client) {

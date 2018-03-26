@@ -3,6 +3,3 @@ build/Release
 
 # Dependency directory
 node_modules
-
-# Created by .ignore support plugin (hsz.mobi)
-.idea

@@ -76,12 +76,5 @@ const userSchema = new Schema({
   timestamps: true
 })
 
-
-// var UserSchema = new Schema({
-//   username: String,
-//   password: String,
-//   scope: String,
-//   address: String
-// });
-
-module.exports = mongoose.model('User', userSchema);
+var connectionUser = mongoose.createConnection('mongodb://admin:admin@ds215019.mlab.com:15019/express-server');
+module.exports = connectionUser.model('User', userSchema);

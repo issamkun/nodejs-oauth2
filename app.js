@@ -1,5 +1,5 @@
 'use strict';
-
+const  http = require('http');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -8,11 +8,11 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 
-const config = require('./config.js')
+const config = require('./config')
 const index = require('./routes/index');
 const userinfo = require('./routes/userinfo');
 const site = require('./routes/site');
-const oauth2 = require('./components/oauth/oauth2');
+const oauth2 = require('./oauth/oauth2');
 
 const app = express();
 // view engine config
@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
 // Populate the DB with new data
-if (config.seedMongoDB) { require('./components/oauth/seedDB'); }
+if (config.seedMongoDB) { require('./oauth/seedDB'); }
 
 app.use('/', index);
 app.get('/login', site.loginForm);
@@ -71,5 +71,34 @@ app.use(function (err, req, res, next) {
     error: err
   });
 });
+
+var server = http.createServer(app);
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+setImmediate(() => {
+
+  var addr = server.address();
+
+  server.listen(port, addr, () => {
+    console.log('Express server listening on http://%d:%d', addr, port)
+  })
+})
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
 
 module.exports = app;

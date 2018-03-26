@@ -6,10 +6,10 @@ const login = require('connect-ensure-login');
 const oauth2orize = require('oauth2orize');
 const passport = require('passport');
 
-const tgen = require('../../utils/tokenGenerator');
-const validate = require('../../utils/validate');
-const config = require('../../config');
-const db = require('./mongodb/index');
+const tgen = require('../utils/tokenGenerator');
+const validate = require('../utils/validate');
+// const config = require('../config');
+const db = require('./models/index');
 
 // Server creation
 const server = oauth2orize.createServer();
@@ -24,8 +24,7 @@ server.grant(oauth2orize.grant.code(function (client, redirectUri, user, ares, c
         authorization_code: tgen(16),
         OAuthClient: client._id,
         redirect_uri: redirectUri,
-        User: user._id,
-        scope: 'profile'
+        User: user._id
     });
     console.log('>>>>> this is the saved code', code);
     code.save(function (err) {

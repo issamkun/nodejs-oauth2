@@ -1,7 +1,7 @@
 'use strict';
 
 const passport = require('passport');
-const mongodb = require('../components/oauth/mongodb');
+const mongodb = require('../oauth/models');
 const validate = require('../utils/validate');
 
 var User = mongodb.User;
@@ -11,6 +11,9 @@ var Client = mongodb.OAuthClient;
 const { Strategy: LocalStrategy } = require('passport-local');
 const { Strategy: BearerStrategy } = require('passport-http-bearer');
 const { BasicStrategy } = require('passport-http');
+
+// Some of this code was inspired from the following sources (official doc for oauth2orize)
+// https://github.com/gerges-beshay/oauth2orize-examples/blob/master/utils/index.js
 
 /**
  * LocalStrategy
@@ -56,16 +59,14 @@ passport.use(new BearerStrategy(
 
         // No user found
         if (!user) { return callback(null, false); }
-
+        
         // Simple example with no scope
         callback(null, user, { scope: '*' });
+
       });
     });
   }
 ));
-
-// Some of this code was inspired from the following sources (official doc for oauth2orize)
-// https://github.com/gerges-beshay/oauth2orize-examples/blob/master/utils/index.js
 
 passport.serializeUser((user, done) => {
   done(null, user._id);
