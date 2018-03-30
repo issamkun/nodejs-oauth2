@@ -1,20 +1,33 @@
 <% include ./layout %>
+
+<div class="container">
 <h1>Decision</h1>
 
 <body>
-
-  <p>Hello <b><%= user.firstname %> <%= user.lastname %>!</b></p>
-  <p><b> <%= client.client_id %> </b> is requesting access to your profile data.</p>
-  <p>Proceed with approval?</p>
+  <div class="dialog">
+    <p>Hello <b><%= user.firstname %> <%= user.lastname %>!</b></p>
+    <p> The application <b> <%= client.client_id %> </b> is requesting access to your profile data:</p>
+    
+    <ul>
+        <li>Email address</li>
+        <li>Firstname & Lastname </li>
+        <li>Address, City, Province, Postal Code</li>
+    </ul>
+  
+    <p>Do you approve access?</p>
+  </div>
 
   <form action="/oauth/authorize/decision" method="post">
     <input name="transaction_id" type="hidden" value="<%= transactionID %>" />
-    <div>
-      <input type="submit" value="Allow" id="allow" />
-      <input type="submit" value="Deny" name="cancel" id="deny" />
-    </div>
+
+        <!-- <button type="submit" id="allow" > Allow </button>
+        <button type="submit" name="cancel" id="deny" > Deny </button> -->
+        <div class="inputButtons">
+        <input class="btn" type="submit" value="Allow" id="allow" />
+        <input class="btn" type="submit" value="Deny" name="cancel" id="deny" />
+      </div>
   </form>
   
 </body>
 
-</html>
+</div>

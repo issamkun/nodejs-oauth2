@@ -1,18 +1,31 @@
 <% include ./layout %>
-<h1>OAuth Server Login</h1>
-<form action="/login" method="post">
-	<div>
-  	<label>Username:</label>
-  	<input type="text" name="username" /><br/>
-	</div>
-	<div>
-  	<label>Password:</label>
-  	<input type="password" name="password" />
-	</div>
-	<br>	
-	<div>
-	  <input type="submit" value="Login" />
-	</div>
-</form>
-<p>e.g - user@user.user:123456</p>
-<p>e.g - admin@admin.admin:123456</p>
+
+	<form action="/login" method="post">
+		<div class="container">
+			<h1>OAuth Server Login</h1>
+			<div>
+				<label for="uname">
+					<b>Username</b>
+				</label>
+				<input type="text" placeholder="Enter Username" name="username" />
+				<br/>
+			</div>
+			<div>
+				<label for="psw">
+					<b>Password</b>
+				</label>
+				<input type="password" placeholder="Enter Password" name="password" />
+			</div>
+			<br>
+			<div>
+				<button type="submit">Log In</button>
+			</div>
+			<div class="hint">
+				<p>user@user.user:123456</p>
+				<p>admin@admin.admin:123456</p>
+			</div>
+			
+		</div>
+
+	</form>
+

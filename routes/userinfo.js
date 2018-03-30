@@ -14,7 +14,7 @@ exports.userinfo = [
       address: req.user.address,
       city: req.user.city,
       postalCode: req.user.postalCode,
-      province: req.user.province,
+      province: req.user.province
     });
 
   },

@@ -38,7 +38,10 @@ app.use(passport.session());
 require('./routes/auth');
 
 // Uniq favicon
+
 app.use(favicon(path.join(__dirname, 'public', '/favicon.ico')));
+
+app.use('/public', express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
@@ -81,7 +84,7 @@ setImmediate(() => {
   var addr = server.address();
 
   server.listen(port, addr, () => {
-    console.log('Express server listening on http://%d:%d', addr, port)
+    console.log('Express server listening on http://%s:%d', addr, port)
   })
 })
 
