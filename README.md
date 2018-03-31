@@ -13,6 +13,6 @@ npm run mate
 
 ## Initiate an OAuth2 Flow
 
-```
+```bash
 http://localhost:3000/oauth/authorize?client_id=vente1&response_type=code&redirect_uri=http://localhost:3000/
 ```

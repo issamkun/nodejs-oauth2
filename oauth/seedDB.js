@@ -42,7 +42,7 @@ User.find({}).remove()
         email: 'user@user.user',
         password: '123456',
         firstname: 'Hans',
-        lastname: 'Johnson',
+        lastname: 'Herbjornsrud',
         address: '123 Jhonson street app 10',
         city: 'Jhonson city',
         postalCode: 'Z2Z 1Z1',
@@ -63,6 +63,26 @@ User.find({}).remove()
                 client_id: 'vente2',
                 client_secret: 'vente2',
                 redirect_uri: 'http://localhost:3000/',
+                User: user._id
+              }, {
+                client_id: 'vente2',
+                client_secret: 'vente2',
+                redirect_uri: 'http://localhost:8080/',
+                User: user._id
+              }, {
+                client_id: 'vente2',
+                client_secret: 'vente2',
+                redirect_uri: 'https://h18-vente2-front.herokuapp.com/uniq',
+                User: user._id
+              }, {
+                client_id: 'vente1',
+                client_secret: 'vente1',
+                redirect_uri: 'http://localhost:8080/',
+                User: user._id
+              }, {
+                client_id: 'vente1',
+                client_secret: 'vente1',
+                redirect_uri: 'http://localhost:8000/',
                 User: user._id
               }
             )
