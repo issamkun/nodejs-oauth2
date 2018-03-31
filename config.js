@@ -7,7 +7,7 @@ module.exports = {
   mongoUser: {
     uri: 'mongodb://admin:admin@ds215019.mlab.com:15019/express-server'
   },
-  seedMongoDB: true,
+  seedMongoDB: false,
   db: 'mongo',
   sessionSecret: 'WatashiwaWatashiha',
   maxAge: 3600000 * 24 * 7 * 52
