@@ -1,6 +1,7 @@
 'use strict';
 const  http = require('http');
 const express = require('express');
+const cors = require('cors')
 const path = require('path');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
@@ -19,6 +20,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -84,7 +86,7 @@ setImmediate(() => {
   var addr = server.address();
 
   server.listen(port, addr, () => {
-    console.log('Express server listening on http://%s:%d', addr, port)
+    console.log('OAuth2 server listening %d', port)
   })
 })
 

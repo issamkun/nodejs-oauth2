@@ -2,6 +2,11 @@ body {
     padding: 10px;
     font: 12px Helvetica, Arial, sans-serif;
     background-color: lightgoldenrodyellow;
+    background: url("../bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 a {
@@ -51,7 +56,7 @@ button {
 }
 
 .inputButtons {
-    text-align:center
+    text-align: center
 }
 
 label {
@@ -82,28 +87,30 @@ h1 {
 
 .container {
     padding: 15px;
-    position: fixed;
+    /* position: fixed; */
+    position: absolute;
     width: 340px;
     height: 300px;
     top: 50%;
     left: 50%;
-    margin-top: -140px;
-    margin-left: -170px;
+    transform: translate(-50%, -50%);
+    /* margin-top: -140px;
+    margin-left: -170px; */
     background: #fff;
     border-radius: 3px;
     border: none;
     box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
 }
 
-.welcomeContainer{
+.welcomeContainer {
     padding: 15px;
-    position: fixed;
+    position: absolute;
+    transform: translate(-50%, -50%);
     width: 340px;
     height: 360px;
     top: 50%;
     left: 50%;
-    margin-top: -140px;
-    margin-left: -170px;
+    transform: translate(-50%, -50%);
     background: #fff;
     border-radius: 3px;
     border: none;
