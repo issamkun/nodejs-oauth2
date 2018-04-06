@@ -18,6 +18,8 @@ exports.login = [
 
 exports.logout = (req, res) => {
     req.logout();
+    // res.clearCookie('connect.sid');
+    console.log("loging out user and redirecting to /")
     res.redirect('/');
 };
 

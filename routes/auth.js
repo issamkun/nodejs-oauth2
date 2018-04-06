@@ -8,6 +8,7 @@ var User = mongodb.User;
 var Token = mongodb.OAuthAccessToken;
 var Client = mongodb.OAuthClient;
 
+
 const { Strategy: LocalStrategy } = require('passport-local');
 const { Strategy: BearerStrategy } = require('passport-http-bearer');
 const { BasicStrategy } = require('passport-http');

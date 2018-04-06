@@ -28,8 +28,8 @@ app.use(bodyParser.json());
 app.use(session({
   secret: config.sessionSecret,
   cookie: { maxAge: config.maxAge },
-  saveUninitialized: true,
-  resave: true,
+  saveUninitialized: false,
+  resave: false,
   key: 'authorization.sid'
 }));
 

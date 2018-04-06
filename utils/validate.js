@@ -3,6 +3,7 @@
 
 'use strict';
 
+const bcrypt = require('bcrypt')
 const validate = Object.create(null);
 
 
@@ -13,18 +14,19 @@ validate.logAndThrow = (msg) => {
 
 validate.user = (user, password) => {
     validate.userExists(user);
-    if (user.password !== password) {
-        validate.logAndThrow('User password is invalid');
+
+    if ( !bcrypt.compareSync(password, user.password)){
+    // if (user.password !== password) {
         console.log('User password is invalid');
-        
+        validate.logAndThrow('User password is invalid');
     }
     return user;
 };
 
 validate.userExists = (user) => {
     if (user == null) {
-        validate.logAndThrow('User does not exist');
         console.log('User does not exist');
+        validate.logAndThrow('User does not exist');
     }
     return user;
 };
