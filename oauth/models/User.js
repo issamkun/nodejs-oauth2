@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var bcrypt = require('bcrypt')
+const config = require('../../config')
 var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
 
@@ -76,5 +76,7 @@ const userSchema = new Schema({
   timestamps: true
 })
 
-var connectionUser = mongoose.createConnection('mongodb://admin:admin@ds215019.mlab.com:15019/express-server');
+config.mongoUser
+
+var connectionUser = mongoose.createConnection(config.mongoUser.uri);
 module.exports = connectionUser.model('User', userSchema);

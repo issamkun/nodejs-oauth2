@@ -9,7 +9,7 @@ module.exports = {
   },
   seedMongoDB: false,
   db: 'mongo',
-  sessionSecret: 'jwsSecret',
+  sessionSecret: 'jwtSecret',
   // maxAge: 3600000 * 24 * 7 * 52
   maxAge: 5 * 60 * 1000
 }
